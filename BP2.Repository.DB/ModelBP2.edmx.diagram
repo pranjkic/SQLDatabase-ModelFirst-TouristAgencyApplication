@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="af193b1c477c42f087c5e9ea47589b67" Name="Diagram1" ZoomLevel="25" >
+        <EntityTypeShape EntityType="ModelBP2.TuristickaAgencija" Width="3" PointX="13" PointY="6.25" />
+        <EntityTypeShape EntityType="ModelBP2.Filijala" Width="3.125" PointX="12.875" PointY="9" />
+        <EntityTypeShape EntityType="ModelBP2.Putovanje" Width="2.875" PointX="2" PointY="4.625" />
+        <EntityTypeShape EntityType="ModelBP2.Klijent" Width="2.625" PointX="1" PointY="10.125" />
+        <EntityTypeShape EntityType="ModelBP2.Cenovnik" Width="3" PointX="19.875" PointY="0.5" />
+        <AssociationConnector Association="ModelBP2.TuristickaAgencija_Filijala" />
+        <EntityTypeShape EntityType="ModelBP2.CenovnikKojiTuristickaAgencijaFormira" Width="3.25" PointX="14.375" PointY="0.5" />
+        <AssociationConnector Association="ModelBP2.TuristickaAgencijaCenovnikKojiTuristickaAgencijaFormira" />
+        <AssociationConnector Association="ModelBP2.CenovnikCenovnikKojiTuristickaAgencijaFormira" />
+        <EntityTypeShape EntityType="ModelBP2.KlijentKojiPoslujeSaFilijalom" Width="2.625" PointX="4.5" PointY="10.125" />
+        <AssociationConnector Association="ModelBP2.KlijentKlijentKojiPoslujeSaFilijalom" />
+        <AssociationConnector Association="ModelBP2.FilijalaKlijentKojiPoslujeSaFilijalom" />
+        <EntityTypeShape EntityType="ModelBP2.PutovanjeKojeNudiTuristickaAgencija" Width="2.875" PointX="7" PointY="5.5" />
+        <AssociationConnector Association="ModelBP2.Putovanje_PutovanjeKojeNudiTuristickaAgencija" />
+        <AssociationConnector Association="ModelBP2.TuristickaAgencijaPutovanjeKojeNudiTuristickaAgencija" />
+        <EntityTypeShape EntityType="ModelBP2.Ugovor" Width="4.75" PointX="7.375" PointY="13.125" />
+        <AssociationConnector Association="ModelBP2.PutovanjeKojeNudiTuristickaAgencijaUgovor" />
+        <AssociationConnector Association="ModelBP2.KlijentKojiPoslujeSaFilijalomUgovor" />
+        <EntityTypeShape EntityType="ModelBP2.Cenovnik_Putovanje" Width="4" PointX="8.25" PointY="0.75" />
+        <AssociationConnector Association="ModelBP2.PutovanjeKojeNudiTuristickaAgencija_Cenovnik_Putovanje" />
+        <AssociationConnector Association="ModelBP2.CenovnikKojiTuristickaAgencijaFormira_Cenovnik_Putovanje" />
+        <EntityTypeShape EntityType="ModelBP2.Radnik" Width="2.25" PointX="23.25" PointY="7.875" />
+        <EntityTypeShape EntityType="ModelBP2.Sekretarica" Width="1.5" PointX="21.125" PointY="5.75" />
+        <InheritanceConnector EntityType="ModelBP2.Sekretarica" />
+        <EntityTypeShape EntityType="ModelBP2.Vodic" Width="2.25" PointX="23.875" PointY="4.5" />
+        <InheritanceConnector EntityType="ModelBP2.Vodic" />
+        <EntityTypeShape EntityType="ModelBP2.Menadzer" Width="1.5" PointX="26.25" PointY="6.125" />
+        <InheritanceConnector EntityType="ModelBP2.Menadzer" />
+        <AssociationConnector Association="ModelBP2.FilijalaRadnik" />
+        <AssociationConnector Association="ModelBP2.SekretaricaUgovor" />
+        <AssociationConnector Association="ModelBP2.VodicPutovanjeKojeNudiTuristickaAgencija" />
+        <AssociationConnector Association="ModelBP2.MenadzerFilijala" ></AssociationConnector>
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

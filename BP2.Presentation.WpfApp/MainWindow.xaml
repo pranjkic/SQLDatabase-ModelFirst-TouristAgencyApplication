@@ -1,0 +1,23 @@
+﻿<Window x:Class="BP2.Presentation.WpfApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BP2.Presentation.WpfApp"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="363.626" Width="676.303" HorizontalAlignment="Center" VerticalAlignment="Center" WindowStartupLocation="CenterScreen">
+	<Grid Margin="0,0,-6.4,0.4" Background="LightBlue" HorizontalAlignment="Left" Width="676">
+		<Button Content="Turisticke agencije" Command="{Binding TuristickeAgencijeComand}" Width="100" Height="100" Background="CadetBlue" Margin="39,48,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+		<Button Content="Putovanja" Command="{Binding PutovanjaComand}" Width="100" Height="100" Margin="401,48,0,0" Background="CadetBlue" VerticalAlignment="Top" HorizontalAlignment="Left"></Button>
+		<Button Content="Klijenti" Command="{Binding KlijentiComand}" Width="100" Height="100" Margin="39,184,0,0" Background="CadetBlue" RenderTransformOrigin="2.768,0.767" VerticalAlignment="Top" HorizontalAlignment="Left"></Button>
+		<Button Content="Filijale" Command="{Binding FilijaleComand}" Width="100" Height="100" Margin="161,48,0,0" Background="CadetBlue" RenderTransformOrigin="2.768,0.767" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+		<Button Content="Cenovnici" Command="{Binding CenovniciComand}" Width="100" Height="100" Margin="401,184,0,0" Background="CadetBlue" RenderTransformOrigin="2.768,0.767" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+		<Button Content="Usvoji cenovnik" Command="{Binding UsvojiCenovnikComand}" Width="100" Height="100" Background="CadetBlue" Margin="525,184,0,0" RenderTransformOrigin="2.768,0.767" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+		<Button Content="Radnici" Command="{Binding ZaposliRadnikaComand}" Width="100" Height="100" Background="CadetBlue" Margin="281,48,0,0" RenderTransformOrigin="2.768,0.767" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+		<Button Content="Usvoji putovanje" Command="{Binding UsvojiPutovanjeComand}" Width="100" Height="100" Background="CadetBlue" Margin="525,48,0,0" RenderTransformOrigin="2.768,0.767" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+		<Button Content="Posluj sa klijentom" Command="{Binding KlijentFilijalaComand}" Width="100" Height="100" Background="CadetBlue" Margin="161,184,0,0" RenderTransformOrigin="2.768,0.767" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+		<Button Content="Ugovor" Command="{Binding UgovorComand}" Width="100" Height="100" Background="CadetBlue" Margin="281,184,0,0" RenderTransformOrigin="2.768,0.767" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+
+	</Grid>
+
+</Window>

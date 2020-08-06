@@ -1,0 +1,1098 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ModelBP2.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Cenovnik_Putovanje">
+          <Key>
+            <PropertyRef Name="PutovanjeKojeNudiTuristickaAgencijaPutovanjeId" />
+            <PropertyRef Name="PutovanjeKojeNudiTuristickaAgencijaTuristickaAgencijaId" />
+            <PropertyRef Name="PutovanjeKojeNudiTuristickaAgencijaVodicId" />
+            <PropertyRef Name="CenovnikKojiTuristickaAgencijaFormiraTuristickaAgencijaId" />
+            <PropertyRef Name="CenovnikKojiTuristickaAgencijaFormiraCenovnikId" />
+          </Key>
+          <Property Name="PutovanjeKojeNudiTuristickaAgencijaPutovanjeId" Type="int" Nullable="false" />
+          <Property Name="PutovanjeKojeNudiTuristickaAgencijaTuristickaAgencijaId" Type="int" Nullable="false" />
+          <Property Name="PutovanjeKojeNudiTuristickaAgencijaVodicId" Type="int" Nullable="false" />
+          <Property Name="CenovnikKojiTuristickaAgencijaFormiraTuristickaAgencijaId" Type="int" Nullable="false" />
+          <Property Name="CenovnikKojiTuristickaAgencijaFormiraCenovnikId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CenovnikKojiTuristickaAgencijaFormiraSet">
+          <Key>
+            <PropertyRef Name="TuristickaAgencijaId" />
+            <PropertyRef Name="CenovnikId" />
+          </Key>
+          <Property Name="KoeficijentNaplate" Type="float" Nullable="false" />
+          <Property Name="TuristickaAgencijaId" Type="int" Nullable="false" />
+          <Property Name="CenovnikId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CenovnikSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PocetakVazenja" Type="datetime" Nullable="false" />
+          <Property Name="KrajVazenja" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FilijalaSet">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="TuristickaAgencijaId" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Naziv" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Grad" Type="nvarchar(max)" />
+          <Property Name="Adresa" Type="nvarchar(max)" />
+          <Property Name="Email" Type="nvarchar(max)" />
+          <Property Name="TuristickaAgencijaId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="KlijentKojiPoslujeSaFilijalomSet">
+          <Key>
+            <PropertyRef Name="KlijentId" />
+            <PropertyRef Name="FilijalaId" />
+            <PropertyRef Name="FilijalaTuristickaAgencijaId" />
+          </Key>
+          <Property Name="KlijentId" Type="int" Nullable="false" />
+          <Property Name="FilijalaId" Type="int" Nullable="false" />
+          <Property Name="FilijalaTuristickaAgencijaId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="KlijentSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ime" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Prezime" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="BrojPasosa" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PutovanjeKojeTuristickaAgencijaNudiSet">
+          <Key>
+            <PropertyRef Name="PutovanjeId" />
+            <PropertyRef Name="TuristickaAgencijaId" />
+          </Key>
+          <Property Name="DatumDolaska" Type="datetime" Nullable="false" />
+          <Property Name="Trajanje" Type="int" Nullable="false" />
+          <Property Name="CenaPutovanja" Type="float" Nullable="false" />
+          <Property Name="NazivSmestaja" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="PutovanjeId" Type="int" Nullable="false" />
+          <Property Name="TuristickaAgencijaId" Type="int" Nullable="false" />
+          <Property Name="VodicId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PutovanjeSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Destinacija" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RadnikSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ime" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Prezime" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="JMBG" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="FilijalaId" Type="int" Nullable="false" />
+          <Property Name="FilijalaTuristickaAgencijaId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RadnikSet_Menadzer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="BrojPodredjenihRadnika" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Filijala1_Id" Type="int" Nullable="false" />
+          <Property Name="Filijala1_TuristickaAgencijaId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RadnikSet_Sekretarica">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="ProdatiUgovori" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RadnikSet_Vodic">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="IstorijaPutovanja" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TuristickaAgencijaSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Naziv" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UgovorSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SifraOsiguranja" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="PutovanjeKojeNudiTuristickaAgencijaPutovanjeId" Type="int" Nullable="false" />
+          <Property Name="PutovanjeKojeNudiTuristickaAgencijaTuristickaAgencijaId" Type="int" Nullable="false" />
+          <Property Name="PutovanjeKojeNudiTuristickaAgencijaVodicId" Type="int" Nullable="false" />
+          <Property Name="KlijentKojiPoslujeSaFilijalomKlijentId" Type="int" Nullable="false" />
+          <Property Name="KlijentKojiPoslujeSaFilijalomFilijalaId" Type="int" Nullable="false" />
+          <Property Name="KlijentKojiPoslujeSaFilijalomFilijalaTuristickaAgencijaId" Type="int" Nullable="false" />
+          <Property Name="SekretaricaId" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_CenovnikCenovnikKojiTuristickaAgencijaFormira">
+          <End Role="CenovnikSet" Type="Self.CenovnikSet" Multiplicity="1" />
+          <End Role="CenovnikKojiTuristickaAgencijaFormiraSet" Type="Self.CenovnikKojiTuristickaAgencijaFormiraSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CenovnikSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CenovnikKojiTuristickaAgencijaFormiraSet">
+              <PropertyRef Name="CenovnikId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CenovnikKojiTuristickaAgencijaFormira_Cenovnik_Putovanje">
+          <End Role="CenovnikKojiTuristickaAgencijaFormiraSet" Type="Self.CenovnikKojiTuristickaAgencijaFormiraSet" Multiplicity="1" />
+          <End Role="Cenovnik_Putovanje" Type="Self.Cenovnik_Putovanje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CenovnikKojiTuristickaAgencijaFormiraSet">
+              <PropertyRef Name="TuristickaAgencijaId" />
+              <PropertyRef Name="CenovnikId" />
+            </Principal>
+            <Dependent Role="Cenovnik_Putovanje">
+              <PropertyRef Name="CenovnikKojiTuristickaAgencijaFormiraTuristickaAgencijaId" />
+              <PropertyRef Name="CenovnikKojiTuristickaAgencijaFormiraCenovnikId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FilijalaKlijentKojiPoslujeSaFilijalom">
+          <End Role="FilijalaSet" Type="Self.FilijalaSet" Multiplicity="1" />
+          <End Role="KlijentKojiPoslujeSaFilijalomSet" Type="Self.KlijentKojiPoslujeSaFilijalomSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FilijalaSet">
+              <PropertyRef Name="Id" />
+              <PropertyRef Name="TuristickaAgencijaId" />
+            </Principal>
+            <Dependent Role="KlijentKojiPoslujeSaFilijalomSet">
+              <PropertyRef Name="FilijalaId" />
+              <PropertyRef Name="FilijalaTuristickaAgencijaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FilijalaRadnik">
+          <End Role="FilijalaSet" Type="Self.FilijalaSet" Multiplicity="1" />
+          <End Role="RadnikSet" Type="Self.RadnikSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FilijalaSet">
+              <PropertyRef Name="Id" />
+              <PropertyRef Name="TuristickaAgencijaId" />
+            </Principal>
+            <Dependent Role="RadnikSet">
+              <PropertyRef Name="FilijalaId" />
+              <PropertyRef Name="FilijalaTuristickaAgencijaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KlijentKlijentKojiPoslujeSaFilijalom">
+          <End Role="KlijentSet" Type="Self.KlijentSet" Multiplicity="1" />
+          <End Role="KlijentKojiPoslujeSaFilijalomSet" Type="Self.KlijentKojiPoslujeSaFilijalomSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KlijentSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="KlijentKojiPoslujeSaFilijalomSet">
+              <PropertyRef Name="KlijentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KlijentKojiPoslujeSaFilijalomUgovor">
+          <End Role="KlijentKojiPoslujeSaFilijalomSet" Type="Self.KlijentKojiPoslujeSaFilijalomSet" Multiplicity="1" />
+          <End Role="UgovorSet" Type="Self.UgovorSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KlijentKojiPoslujeSaFilijalomSet">
+              <PropertyRef Name="KlijentId" />
+              <PropertyRef Name="FilijalaId" />
+              <PropertyRef Name="FilijalaTuristickaAgencijaId" />
+            </Principal>
+            <Dependent Role="UgovorSet">
+              <PropertyRef Name="KlijentKojiPoslujeSaFilijalomKlijentId" />
+              <PropertyRef Name="KlijentKojiPoslujeSaFilijalomFilijalaId" />
+              <PropertyRef Name="KlijentKojiPoslujeSaFilijalomFilijalaTuristickaAgencijaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Menadzer_inherits_Radnik">
+          <End Role="RadnikSet" Type="Self.RadnikSet" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="RadnikSet_Menadzer" Type="Self.RadnikSet_Menadzer" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="RadnikSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RadnikSet_Menadzer">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MenadzerFilijala">
+          <End Role="FilijalaSet" Type="Self.FilijalaSet" Multiplicity="1" />
+          <End Role="RadnikSet_Menadzer" Type="Self.RadnikSet_Menadzer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FilijalaSet">
+              <PropertyRef Name="Id" />
+              <PropertyRef Name="TuristickaAgencijaId" />
+            </Principal>
+            <Dependent Role="RadnikSet_Menadzer">
+              <PropertyRef Name="Filijala1_Id" />
+              <PropertyRef Name="Filijala1_TuristickaAgencijaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Putovanje_PutovanjeKojeNudiTuristickaAgencija">
+          <End Role="PutovanjeSet" Type="Self.PutovanjeSet" Multiplicity="1" />
+          <End Role="PutovanjeKojeTuristickaAgencijaNudiSet" Type="Self.PutovanjeKojeTuristickaAgencijaNudiSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PutovanjeSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PutovanjeKojeTuristickaAgencijaNudiSet">
+              <PropertyRef Name="PutovanjeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PutovanjeKojeNudiTuristickaAgencija_Cenovnik_Putovanje">
+          <End Role="PutovanjeKojeTuristickaAgencijaNudiSet" Type="Self.PutovanjeKojeTuristickaAgencijaNudiSet" Multiplicity="1" />
+          <End Role="Cenovnik_Putovanje" Type="Self.Cenovnik_Putovanje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PutovanjeKojeTuristickaAgencijaNudiSet">
+              <PropertyRef Name="PutovanjeId" />
+              <PropertyRef Name="TuristickaAgencijaId" />
+            </Principal>
+            <Dependent Role="Cenovnik_Putovanje">
+              <PropertyRef Name="PutovanjeKojeNudiTuristickaAgencijaPutovanjeId" />
+              <PropertyRef Name="PutovanjeKojeNudiTuristickaAgencijaTuristickaAgencijaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PutovanjeKojeNudiTuristickaAgencijaUgovor">
+          <End Role="PutovanjeKojeTuristickaAgencijaNudiSet" Type="Self.PutovanjeKojeTuristickaAgencijaNudiSet" Multiplicity="1" />
+          <End Role="UgovorSet" Type="Self.UgovorSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PutovanjeKojeTuristickaAgencijaNudiSet">
+              <PropertyRef Name="PutovanjeId" />
+              <PropertyRef Name="TuristickaAgencijaId" />
+            </Principal>
+            <Dependent Role="UgovorSet">
+              <PropertyRef Name="PutovanjeKojeNudiTuristickaAgencijaPutovanjeId" />
+              <PropertyRef Name="PutovanjeKojeNudiTuristickaAgencijaTuristickaAgencijaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sekretarica_inherits_Radnik">
+          <End Role="RadnikSet" Type="Self.RadnikSet" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="RadnikSet_Sekretarica" Type="Self.RadnikSet_Sekretarica" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="RadnikSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RadnikSet_Sekretarica">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SekretaricaUgovor">
+          <End Role="RadnikSet_Sekretarica" Type="Self.RadnikSet_Sekretarica" Multiplicity="1" />
+          <End Role="UgovorSet" Type="Self.UgovorSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RadnikSet_Sekretarica">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UgovorSet">
+              <PropertyRef Name="SekretaricaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TuristickaAgencija_Filijala">
+          <End Role="TuristickaAgencijaSet" Type="Self.TuristickaAgencijaSet" Multiplicity="1" />
+          <End Role="FilijalaSet" Type="Self.FilijalaSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TuristickaAgencijaSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FilijalaSet">
+              <PropertyRef Name="TuristickaAgencijaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TuristickaAgencijaCenovnikKojiTuristickaAgencijaFormira">
+          <End Role="TuristickaAgencijaSet" Type="Self.TuristickaAgencijaSet" Multiplicity="1" />
+          <End Role="CenovnikKojiTuristickaAgencijaFormiraSet" Type="Self.CenovnikKojiTuristickaAgencijaFormiraSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TuristickaAgencijaSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CenovnikKojiTuristickaAgencijaFormiraSet">
+              <PropertyRef Name="TuristickaAgencijaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TuristickaAgencijaPutovanjeKojeNudiTuristickaAgencija">
+          <End Role="TuristickaAgencijaSet" Type="Self.TuristickaAgencijaSet" Multiplicity="1" />
+          <End Role="PutovanjeKojeTuristickaAgencijaNudiSet" Type="Self.PutovanjeKojeTuristickaAgencijaNudiSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TuristickaAgencijaSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PutovanjeKojeTuristickaAgencijaNudiSet">
+              <PropertyRef Name="TuristickaAgencijaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vodic_inherits_Radnik">
+          <End Role="RadnikSet" Type="Self.RadnikSet" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="RadnikSet_Vodic" Type="Self.RadnikSet_Vodic" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="RadnikSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RadnikSet_Vodic">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VodicPutovanjeKojeNudiTuristickaAgencija">
+          <End Role="RadnikSet_Vodic" Type="Self.RadnikSet_Vodic" Multiplicity="1" />
+          <End Role="PutovanjeKojeTuristickaAgencijaNudiSet" Type="Self.PutovanjeKojeTuristickaAgencijaNudiSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RadnikSet_Vodic">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PutovanjeKojeTuristickaAgencijaNudiSet">
+              <PropertyRef Name="VodicId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="AllVodicsPutovanja" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vodicId" Type="int" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="Destinacija" Type="varchar" MaxLength="100" />
+                <Property Name="DatumDolaska" Type="datetime2" Precision="7" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="GetVodicsPutovanja" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vodicId" Type="int" Mode="In" />
+          <Parameter Name="count" Type="int" Mode="InOut" />
+        </Function>
+        <EntityContainer Name="ModelBP2StoreContainer">
+          <EntitySet Name="Cenovnik_Putovanje" EntityType="Self.Cenovnik_Putovanje" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CenovnikKojiTuristickaAgencijaFormiraSet" EntityType="Self.CenovnikKojiTuristickaAgencijaFormiraSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CenovnikSet" EntityType="Self.CenovnikSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FilijalaSet" EntityType="Self.FilijalaSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KlijentKojiPoslujeSaFilijalomSet" EntityType="Self.KlijentKojiPoslujeSaFilijalomSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KlijentSet" EntityType="Self.KlijentSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PutovanjeKojeTuristickaAgencijaNudiSet" EntityType="Self.PutovanjeKojeTuristickaAgencijaNudiSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PutovanjeSet" EntityType="Self.PutovanjeSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RadnikSet" EntityType="Self.RadnikSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RadnikSet_Menadzer" EntityType="Self.RadnikSet_Menadzer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RadnikSet_Sekretarica" EntityType="Self.RadnikSet_Sekretarica" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RadnikSet_Vodic" EntityType="Self.RadnikSet_Vodic" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TuristickaAgencijaSet" EntityType="Self.TuristickaAgencijaSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UgovorSet" EntityType="Self.UgovorSet" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_CenovnikCenovnikKojiTuristickaAgencijaFormira" Association="Self.FK_CenovnikCenovnikKojiTuristickaAgencijaFormira">
+            <End Role="CenovnikSet" EntitySet="CenovnikSet" />
+            <End Role="CenovnikKojiTuristickaAgencijaFormiraSet" EntitySet="CenovnikKojiTuristickaAgencijaFormiraSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CenovnikKojiTuristickaAgencijaFormira_Cenovnik_Putovanje" Association="Self.FK_CenovnikKojiTuristickaAgencijaFormira_Cenovnik_Putovanje">
+            <End Role="CenovnikKojiTuristickaAgencijaFormiraSet" EntitySet="CenovnikKojiTuristickaAgencijaFormiraSet" />
+            <End Role="Cenovnik_Putovanje" EntitySet="Cenovnik_Putovanje" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FilijalaKlijentKojiPoslujeSaFilijalom" Association="Self.FK_FilijalaKlijentKojiPoslujeSaFilijalom">
+            <End Role="FilijalaSet" EntitySet="FilijalaSet" />
+            <End Role="KlijentKojiPoslujeSaFilijalomSet" EntitySet="KlijentKojiPoslujeSaFilijalomSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FilijalaRadnik" Association="Self.FK_FilijalaRadnik">
+            <End Role="FilijalaSet" EntitySet="FilijalaSet" />
+            <End Role="RadnikSet" EntitySet="RadnikSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KlijentKlijentKojiPoslujeSaFilijalom" Association="Self.FK_KlijentKlijentKojiPoslujeSaFilijalom">
+            <End Role="KlijentSet" EntitySet="KlijentSet" />
+            <End Role="KlijentKojiPoslujeSaFilijalomSet" EntitySet="KlijentKojiPoslujeSaFilijalomSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KlijentKojiPoslujeSaFilijalomUgovor" Association="Self.FK_KlijentKojiPoslujeSaFilijalomUgovor">
+            <End Role="KlijentKojiPoslujeSaFilijalomSet" EntitySet="KlijentKojiPoslujeSaFilijalomSet" />
+            <End Role="UgovorSet" EntitySet="UgovorSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Menadzer_inherits_Radnik" Association="Self.FK_Menadzer_inherits_Radnik">
+            <End Role="RadnikSet" EntitySet="RadnikSet" />
+            <End Role="RadnikSet_Menadzer" EntitySet="RadnikSet_Menadzer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MenadzerFilijala" Association="Self.FK_MenadzerFilijala">
+            <End Role="FilijalaSet" EntitySet="FilijalaSet" />
+            <End Role="RadnikSet_Menadzer" EntitySet="RadnikSet_Menadzer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Putovanje_PutovanjeKojeNudiTuristickaAgencija" Association="Self.FK_Putovanje_PutovanjeKojeNudiTuristickaAgencija">
+            <End Role="PutovanjeSet" EntitySet="PutovanjeSet" />
+            <End Role="PutovanjeKojeTuristickaAgencijaNudiSet" EntitySet="PutovanjeKojeTuristickaAgencijaNudiSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PutovanjeKojeNudiTuristickaAgencija_Cenovnik_Putovanje" Association="Self.FK_PutovanjeKojeNudiTuristickaAgencija_Cenovnik_Putovanje">
+            <End Role="PutovanjeKojeTuristickaAgencijaNudiSet" EntitySet="PutovanjeKojeTuristickaAgencijaNudiSet" />
+            <End Role="Cenovnik_Putovanje" EntitySet="Cenovnik_Putovanje" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PutovanjeKojeNudiTuristickaAgencijaUgovor" Association="Self.FK_PutovanjeKojeNudiTuristickaAgencijaUgovor">
+            <End Role="PutovanjeKojeTuristickaAgencijaNudiSet" EntitySet="PutovanjeKojeTuristickaAgencijaNudiSet" />
+            <End Role="UgovorSet" EntitySet="UgovorSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sekretarica_inherits_Radnik" Association="Self.FK_Sekretarica_inherits_Radnik">
+            <End Role="RadnikSet" EntitySet="RadnikSet" />
+            <End Role="RadnikSet_Sekretarica" EntitySet="RadnikSet_Sekretarica" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SekretaricaUgovor" Association="Self.FK_SekretaricaUgovor">
+            <End Role="RadnikSet_Sekretarica" EntitySet="RadnikSet_Sekretarica" />
+            <End Role="UgovorSet" EntitySet="UgovorSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TuristickaAgencija_Filijala" Association="Self.FK_TuristickaAgencija_Filijala">
+            <End Role="TuristickaAgencijaSet" EntitySet="TuristickaAgencijaSet" />
+            <End Role="FilijalaSet" EntitySet="FilijalaSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TuristickaAgencijaCenovnikKojiTuristickaAgencijaFormira" Association="Self.FK_TuristickaAgencijaCenovnikKojiTuristickaAgencijaFormira">
+            <End Role="TuristickaAgencijaSet" EntitySet="TuristickaAgencijaSet" />
+            <End Role="CenovnikKojiTuristickaAgencijaFormiraSet" EntitySet="CenovnikKojiTuristickaAgencijaFormiraSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TuristickaAgencijaPutovanjeKojeNudiTuristickaAgencija" Association="Self.FK_TuristickaAgencijaPutovanjeKojeNudiTuristickaAgencija">
+            <End Role="TuristickaAgencijaSet" EntitySet="TuristickaAgencijaSet" />
+            <End Role="PutovanjeKojeTuristickaAgencijaNudiSet" EntitySet="PutovanjeKojeTuristickaAgencijaNudiSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vodic_inherits_Radnik" Association="Self.FK_Vodic_inherits_Radnik">
+            <End Role="RadnikSet" EntitySet="RadnikSet" />
+            <End Role="RadnikSet_Vodic" EntitySet="RadnikSet_Vodic" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VodicPutovanjeKojeNudiTuristickaAgencija" Association="Self.FK_VodicPutovanjeKojeNudiTuristickaAgencija">
+            <End Role="RadnikSet_Vodic" EntitySet="RadnikSet_Vodic" />
+            <End Role="PutovanjeKojeTuristickaAgencijaNudiSet" EntitySet="PutovanjeKojeTuristickaAgencijaNudiSet" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="ModelBP2" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="ModelBP2Container" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="TuristickaAgencijaSet" EntityType="ModelBP2.TuristickaAgencija" />
+          <EntitySet Name="FilijalaSet" EntityType="ModelBP2.Filijala" />
+          <EntitySet Name="PutovanjeSet" EntityType="ModelBP2.Putovanje" />
+          <EntitySet Name="KlijentSet" EntityType="ModelBP2.Klijent" />
+          <EntitySet Name="CenovnikSet" EntityType="ModelBP2.Cenovnik" />
+          <AssociationSet Name="TuristickaAgencija_Filijala" Association="ModelBP2.TuristickaAgencija_Filijala">
+            <End Role="TuristickaAgencija" EntitySet="TuristickaAgencijaSet" />
+            <End Role="Filijala" EntitySet="FilijalaSet" />
+          </AssociationSet>
+          <EntitySet Name="CenovnikKojiTuristickaAgencijaFormiraSet" EntityType="ModelBP2.CenovnikKojiTuristickaAgencijaFormira" />
+          <AssociationSet Name="TuristickaAgencija_CenovnikKojiTuristickaAgencijaFormira" Association="ModelBP2.TuristickaAgencijaCenovnikKojiTuristickaAgencijaFormira">
+            <End Role="TuristickaAgencija" EntitySet="TuristickaAgencijaSet" />
+            <End Role="CenovnikKojiTuristickaAgencijaFormira" EntitySet="CenovnikKojiTuristickaAgencijaFormiraSet" />
+          </AssociationSet>
+          <AssociationSet Name="Cenovnik_CenovnikKojiTuristickaAgencijaFormira" Association="ModelBP2.CenovnikCenovnikKojiTuristickaAgencijaFormira">
+            <End Role="Cenovnik" EntitySet="CenovnikSet" />
+            <End Role="CenovnikKojiTuristickaAgencijaFormira" EntitySet="CenovnikKojiTuristickaAgencijaFormiraSet" />
+          </AssociationSet>
+          <EntitySet Name="KlijentKojiPoslujeSaFilijalomSet" EntityType="ModelBP2.KlijentKojiPoslujeSaFilijalom" />
+          <AssociationSet Name="Klijent_KlijentKojiPoslujeSaFilijalom" Association="ModelBP2.KlijentKlijentKojiPoslujeSaFilijalom">
+            <End Role="Klijent" EntitySet="KlijentSet" />
+            <End Role="KlijentKojiPoslujeSaFilijalom" EntitySet="KlijentKojiPoslujeSaFilijalomSet" />
+          </AssociationSet>
+          <AssociationSet Name="Filijala_KlijentKojiPoslujeSaFilijalom" Association="ModelBP2.FilijalaKlijentKojiPoslujeSaFilijalom">
+            <End Role="Filijala" EntitySet="FilijalaSet" />
+            <End Role="KlijentKojiPoslujeSaFilijalom" EntitySet="KlijentKojiPoslujeSaFilijalomSet" />
+          </AssociationSet>
+          <EntitySet Name="PutovanjeKojeTuristickaAgencijaNudiSet" EntityType="ModelBP2.PutovanjeKojeNudiTuristickaAgencija" />
+          <AssociationSet Name="Putovanje_PutovanjeKojeNudiTuristickaAgencija" Association="ModelBP2.Putovanje_PutovanjeKojeNudiTuristickaAgencija">
+            <End Role="Putovanje" EntitySet="PutovanjeSet" />
+            <End Role="PutovanjeKojeNudiTuristickaAgencija" EntitySet="PutovanjeKojeTuristickaAgencijaNudiSet" />
+          </AssociationSet>
+          <AssociationSet Name="TuristickaAgencijaPutovanjeKojeNudiTuristickaAgencija" Association="ModelBP2.TuristickaAgencijaPutovanjeKojeNudiTuristickaAgencija">
+            <End Role="TuristickaAgencija" EntitySet="TuristickaAgencijaSet" />
+            <End Role="PutovanjeKojeNudiTuristickaAgencija" EntitySet="PutovanjeKojeTuristickaAgencijaNudiSet" />
+          </AssociationSet>
+          <EntitySet Name="UgovorSet" EntityType="ModelBP2.Ugovor" />
+          <AssociationSet Name="PutovanjeKojeNudiTuristickaAgencijaUgovor" Association="ModelBP2.PutovanjeKojeNudiTuristickaAgencijaUgovor">
+            <End Role="PutovanjeKojeNudiTuristickaAgencija" EntitySet="PutovanjeKojeTuristickaAgencijaNudiSet" />
+            <End Role="Ugovor" EntitySet="UgovorSet" />
+          </AssociationSet>
+          <AssociationSet Name="KlijentKojiPoslujeSaFilijalom_Ugovor" Association="ModelBP2.KlijentKojiPoslujeSaFilijalomUgovor">
+            <End Role="KlijentKojiPoslujeSaFilijalom" EntitySet="KlijentKojiPoslujeSaFilijalomSet" />
+            <End Role="Ugovor" EntitySet="UgovorSet" />
+          </AssociationSet>
+          <EntitySet Name="Cenovnik_Putovanje" EntityType="ModelBP2.Cenovnik_Putovanje" />
+          <AssociationSet Name="PutovanjeKojeNudiTuristickaAgencija_Cenovnik_Putovanje" Association="ModelBP2.PutovanjeKojeNudiTuristickaAgencija_Cenovnik_Putovanje">
+            <End Role="PutovanjeKojeNudiTuristickaAgencija" EntitySet="PutovanjeKojeTuristickaAgencijaNudiSet" />
+            <End Role="Cenovnik_Putovanje" EntitySet="Cenovnik_Putovanje" />
+          </AssociationSet>
+          <AssociationSet Name="CenovnikKojiTuristickaAgencijaFormira_Cenovnik_Putovanje" Association="ModelBP2.CenovnikKojiTuristickaAgencijaFormira_Cenovnik_Putovanje">
+            <End Role="CenovnikKojiTuristickaAgencijaFormira" EntitySet="CenovnikKojiTuristickaAgencijaFormiraSet" />
+            <End Role="Cenovnik_Putovanje" EntitySet="Cenovnik_Putovanje" />
+          </AssociationSet>
+          <EntitySet Name="RadnikSet" EntityType="ModelBP2.Radnik" />
+          <AssociationSet Name="FilijalaRadnik" Association="ModelBP2.FilijalaRadnik">
+            <End Role="Filijala" EntitySet="FilijalaSet" />
+            <End Role="Radnik" EntitySet="RadnikSet" />
+          </AssociationSet>
+          <AssociationSet Name="SekretaricaUgovor" Association="ModelBP2.SekretaricaUgovor">
+            <End EntitySet="RadnikSet" Role="Sekretarica" />
+            <End EntitySet="UgovorSet" Role="Ugovor" />
+          </AssociationSet>
+          <AssociationSet Name="VodicPutovanjeKojeNudiTuristickaAgencija" Association="ModelBP2.VodicPutovanjeKojeNudiTuristickaAgencija">
+            <End Role="Vodic" EntitySet="RadnikSet" />
+            <End Role="PutovanjeKojeNudiTuristickaAgencija" EntitySet="PutovanjeKojeTuristickaAgencijaNudiSet" />
+          </AssociationSet>
+          <AssociationSet Name="MenadzerFilijala" Association="ModelBP2.MenadzerFilijala">
+            <End Role="Menadzer" EntitySet="RadnikSet" />
+            <End Role="Filijala" EntitySet="FilijalaSet" />
+          </AssociationSet>
+          <FunctionImport Name="AllVodicsPutovanja" IsComposable="true" ReturnType="Collection(ModelBP2.AllVodicsPutovanja_Result)">
+            <Parameter Name="vodicId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetVodicsPutovanja">
+            <Parameter Name="vodicId" Mode="In" Type="Int32" />
+            <Parameter Name="count" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          </EntityContainer>
+        <EntityType Name="TuristickaAgencija">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Naziv" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Filijalas" Relationship="ModelBP2.TuristickaAgencija_Filijala" FromRole="TuristickaAgencija" ToRole="Filijala" />
+          <NavigationProperty Name="CenovnikKojiTuristickaAgencijaFormiras" Relationship="ModelBP2.TuristickaAgencijaCenovnikKojiTuristickaAgencijaFormira" FromRole="TuristickaAgencija" ToRole="CenovnikKojiTuristickaAgencijaFormira" />
+          <NavigationProperty Name="PutovanjeKojeNudiTuristickaAgencijas" Relationship="ModelBP2.TuristickaAgencijaPutovanjeKojeNudiTuristickaAgencija" FromRole="TuristickaAgencija" ToRole="PutovanjeKojeNudiTuristickaAgencija" />
+        </EntityType>
+        <EntityType Name="Filijala">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="TuristickaAgencijaId" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Naziv" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Grad" Type="String" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Adresa" Type="String" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Email" Type="String" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="TuristickaAgencija" Relationship="ModelBP2.TuristickaAgencija_Filijala" FromRole="Filijala" ToRole="TuristickaAgencija" />
+          <Property Name="TuristickaAgencijaId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="KlijentKojiPoslujeSaFilijaloms" Relationship="ModelBP2.FilijalaKlijentKojiPoslujeSaFilijalom" FromRole="Filijala" ToRole="KlijentKojiPoslujeSaFilijalom" />
+          <NavigationProperty Name="Radniks" Relationship="ModelBP2.FilijalaRadnik" FromRole="Filijala" ToRole="Radnik" />
+          <NavigationProperty Name="Menadzer" Relationship="ModelBP2.MenadzerFilijala" FromRole="Filijala" ToRole="Menadzer" />
+        </EntityType>
+        <EntityType Name="Putovanje">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Destinacija" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="PutovanjeKojeNudiTuristickaAgencijas" Relationship="ModelBP2.Putovanje_PutovanjeKojeNudiTuristickaAgencija" FromRole="Putovanje" ToRole="PutovanjeKojeNudiTuristickaAgencija" />
+        </EntityType>
+        <EntityType Name="Klijent">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ime" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Prezime" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="BrojPasosa" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="KlijentKojiPoslujeSaFilijaloms" Relationship="ModelBP2.KlijentKlijentKojiPoslujeSaFilijalom" FromRole="Klijent" ToRole="KlijentKojiPoslujeSaFilijalom" />
+        </EntityType>
+        <EntityType Name="Cenovnik">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PocetakVazenja" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="KrajVazenja" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="CenovnikKojiTuristickaAgencijaFormiras" Relationship="ModelBP2.CenovnikCenovnikKojiTuristickaAgencijaFormira" FromRole="Cenovnik" ToRole="CenovnikKojiTuristickaAgencijaFormira" />
+        </EntityType>
+        <Association Name="TuristickaAgencija_Filijala">
+          <End Type="ModelBP2.TuristickaAgencija" Role="TuristickaAgencija" Multiplicity="1" />
+          <End Type="ModelBP2.Filijala" Role="Filijala" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TuristickaAgencija">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Filijala">
+              <PropertyRef Name="TuristickaAgencijaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="CenovnikKojiTuristickaAgencijaFormira" >
+          <Key>
+            <PropertyRef Name="TuristickaAgencijaId" />
+            <PropertyRef Name="CenovnikId" />
+          </Key>
+          <Property Name="KoeficijentNaplate" Type="Double" Nullable="false" />
+          <NavigationProperty Name="TuristickaAgencija" Relationship="ModelBP2.TuristickaAgencijaCenovnikKojiTuristickaAgencijaFormira" FromRole="CenovnikKojiTuristickaAgencijaFormira" ToRole="TuristickaAgencija" />
+          <Property Name="TuristickaAgencijaId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Cenovnik" Relationship="ModelBP2.CenovnikCenovnikKojiTuristickaAgencijaFormira" FromRole="CenovnikKojiTuristickaAgencijaFormira" ToRole="Cenovnik" />
+          <Property Name="CenovnikId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Cenovnik_Putovanje" Relationship="ModelBP2.CenovnikKojiTuristickaAgencijaFormira_Cenovnik_Putovanje" FromRole="CenovnikKojiTuristickaAgencijaFormira" ToRole="Cenovnik_Putovanje" />
+        </EntityType>
+        <Association Name="TuristickaAgencijaCenovnikKojiTuristickaAgencijaFormira">
+          <End Type="ModelBP2.TuristickaAgencija" Role="TuristickaAgencija" Multiplicity="1" />
+          <End Type="ModelBP2.CenovnikKojiTuristickaAgencijaFormira" Role="CenovnikKojiTuristickaAgencijaFormira" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TuristickaAgencija">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CenovnikKojiTuristickaAgencijaFormira">
+              <PropertyRef Name="TuristickaAgencijaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CenovnikCenovnikKojiTuristickaAgencijaFormira">
+          <End Type="ModelBP2.Cenovnik" Role="Cenovnik" Multiplicity="1" />
+          <End Type="ModelBP2.CenovnikKojiTuristickaAgencijaFormira" Role="CenovnikKojiTuristickaAgencijaFormira" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cenovnik">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CenovnikKojiTuristickaAgencijaFormira">
+              <PropertyRef Name="CenovnikId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="KlijentKojiPoslujeSaFilijalom" >
+          <Key>
+            <PropertyRef Name="KlijentId" />
+            <PropertyRef Name="FilijalaId" />
+            <PropertyRef Name="FilijalaTuristickaAgencijaId" />
+          </Key>
+          <NavigationProperty Name="Klijent" Relationship="ModelBP2.KlijentKlijentKojiPoslujeSaFilijalom" FromRole="KlijentKojiPoslujeSaFilijalom" ToRole="Klijent" />
+          <Property Name="KlijentId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Filijala" Relationship="ModelBP2.FilijalaKlijentKojiPoslujeSaFilijalom" FromRole="KlijentKojiPoslujeSaFilijalom" ToRole="Filijala" />
+          <Property Name="FilijalaId" Type="Int32" Nullable="false" />
+          <Property Name="FilijalaTuristickaAgencijaId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Ugovors" Relationship="ModelBP2.KlijentKojiPoslujeSaFilijalomUgovor" FromRole="KlijentKojiPoslujeSaFilijalom" ToRole="Ugovor" />
+        </EntityType>
+        <Association Name="KlijentKlijentKojiPoslujeSaFilijalom">
+          <End Type="ModelBP2.Klijent" Role="Klijent" Multiplicity="1" />
+          <End Type="ModelBP2.KlijentKojiPoslujeSaFilijalom" Role="KlijentKojiPoslujeSaFilijalom" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Klijent">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="KlijentKojiPoslujeSaFilijalom">
+              <PropertyRef Name="KlijentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FilijalaKlijentKojiPoslujeSaFilijalom">
+          <End Type="ModelBP2.Filijala" Role="Filijala" Multiplicity="1" />
+          <End Type="ModelBP2.KlijentKojiPoslujeSaFilijalom" Role="KlijentKojiPoslujeSaFilijalom" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Filijala">
+              <PropertyRef Name="Id" />
+              <PropertyRef Name="TuristickaAgencijaId" />
+            </Principal>
+            <Dependent Role="KlijentKojiPoslujeSaFilijalom">
+              <PropertyRef Name="FilijalaId" />
+              <PropertyRef Name="FilijalaTuristickaAgencijaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="PutovanjeKojeNudiTuristickaAgencija" >
+          <Key>
+            <PropertyRef Name="PutovanjeId" />
+            <PropertyRef Name="TuristickaAgencijaId" />
+          </Key>
+          <Property Name="DatumDolaska" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Trajanje" Type="Int32" Nullable="false" />
+          <Property Name="CenaPutovanja" Type="Double" Nullable="false" />
+          <Property Name="NazivSmestaja" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Putovanje" Relationship="ModelBP2.Putovanje_PutovanjeKojeNudiTuristickaAgencija" FromRole="PutovanjeKojeNudiTuristickaAgencija" ToRole="Putovanje" />
+          <Property Name="PutovanjeId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TuristickaAgencija" Relationship="ModelBP2.TuristickaAgencijaPutovanjeKojeNudiTuristickaAgencija" FromRole="PutovanjeKojeNudiTuristickaAgencija" ToRole="TuristickaAgencija" />
+          <Property Name="TuristickaAgencijaId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Ugovors" Relationship="ModelBP2.PutovanjeKojeNudiTuristickaAgencijaUgovor" FromRole="PutovanjeKojeNudiTuristickaAgencija" ToRole="Ugovor" />
+          <NavigationProperty Name="Cenovnik_Putovanje" Relationship="ModelBP2.PutovanjeKojeNudiTuristickaAgencija_Cenovnik_Putovanje" FromRole="PutovanjeKojeNudiTuristickaAgencija" ToRole="Cenovnik_Putovanje" />
+          <NavigationProperty Name="Vodic" Relationship="ModelBP2.VodicPutovanjeKojeNudiTuristickaAgencija" FromRole="PutovanjeKojeNudiTuristickaAgencija" ToRole="Vodic" />
+          <Property Name="VodicId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="Putovanje_PutovanjeKojeNudiTuristickaAgencija">
+          <End Type="ModelBP2.Putovanje" Role="Putovanje" Multiplicity="1" />
+          <End Type="ModelBP2.PutovanjeKojeNudiTuristickaAgencija" Role="PutovanjeKojeNudiTuristickaAgencija" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Putovanje">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PutovanjeKojeNudiTuristickaAgencija">
+              <PropertyRef Name="PutovanjeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TuristickaAgencijaPutovanjeKojeNudiTuristickaAgencija">
+          <End Type="ModelBP2.TuristickaAgencija" Role="TuristickaAgencija" Multiplicity="1" />
+          <End Type="ModelBP2.PutovanjeKojeNudiTuristickaAgencija" Role="PutovanjeKojeNudiTuristickaAgencija" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TuristickaAgencija">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PutovanjeKojeNudiTuristickaAgencija">
+              <PropertyRef Name="TuristickaAgencijaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Ugovor">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SifraOsiguranja" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="PutovanjeKojeNudiTuristickaAgencija" Relationship="ModelBP2.PutovanjeKojeNudiTuristickaAgencijaUgovor" FromRole="Ugovor" ToRole="PutovanjeKojeNudiTuristickaAgencija" />
+          <Property Name="PutovanjeKojeNudiTuristickaAgencijaPutovanjeId" Type="Int32" Nullable="false" />
+          <Property Name="PutovanjeKojeNudiTuristickaAgencijaTuristickaAgencijaId" Type="Int32" Nullable="false" />
+          <Property Name="PutovanjeKojeNudiTuristickaAgencijaVodicId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="KlijentKojiPoslujeSaFilijalom" Relationship="ModelBP2.KlijentKojiPoslujeSaFilijalomUgovor" FromRole="Ugovor" ToRole="KlijentKojiPoslujeSaFilijalom" />
+          <Property Name="KlijentKojiPoslujeSaFilijalomKlijentId" Type="Int32" Nullable="false" />
+          <Property Name="KlijentKojiPoslujeSaFilijalomFilijalaId" Type="Int32" Nullable="false" />
+          <Property Name="KlijentKojiPoslujeSaFilijalomFilijalaTuristickaAgencijaId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Sekretarica" Relationship="ModelBP2.SekretaricaUgovor" FromRole="Ugovor" ToRole="Sekretarica" />
+          <Property Name="SekretaricaId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="PutovanjeKojeNudiTuristickaAgencijaUgovor">
+          <End Type="ModelBP2.PutovanjeKojeNudiTuristickaAgencija" Role="PutovanjeKojeNudiTuristickaAgencija" Multiplicity="1" />
+          <End Type="ModelBP2.Ugovor" Role="Ugovor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PutovanjeKojeNudiTuristickaAgencija">
+              <PropertyRef Name="PutovanjeId" />
+              <PropertyRef Name="TuristickaAgencijaId" />
+            </Principal>
+            <Dependent Role="Ugovor">
+              <PropertyRef Name="PutovanjeKojeNudiTuristickaAgencijaPutovanjeId" />
+              <PropertyRef Name="PutovanjeKojeNudiTuristickaAgencijaTuristickaAgencijaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="KlijentKojiPoslujeSaFilijalomUgovor">
+          <End Type="ModelBP2.KlijentKojiPoslujeSaFilijalom" Role="KlijentKojiPoslujeSaFilijalom" Multiplicity="1" />
+          <End Type="ModelBP2.Ugovor" Role="Ugovor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KlijentKojiPoslujeSaFilijalom">
+              <PropertyRef Name="KlijentId" />
+              <PropertyRef Name="FilijalaId" />
+              <PropertyRef Name="FilijalaTuristickaAgencijaId" />
+            </Principal>
+            <Dependent Role="Ugovor">
+              <PropertyRef Name="KlijentKojiPoslujeSaFilijalomKlijentId" />
+              <PropertyRef Name="KlijentKojiPoslujeSaFilijalomFilijalaId" />
+              <PropertyRef Name="KlijentKojiPoslujeSaFilijalomFilijalaTuristickaAgencijaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Cenovnik_Putovanje" >
+          <Key>
+            <PropertyRef Name="PutovanjeKojeNudiTuristickaAgencijaPutovanjeId" />
+            <PropertyRef Name="PutovanjeKojeNudiTuristickaAgencijaTuristickaAgencijaId" />
+            <PropertyRef Name="PutovanjeKojeNudiTuristickaAgencijaVodicId" />
+            <PropertyRef Name="CenovnikKojiTuristickaAgencijaFormiraTuristickaAgencijaId" />
+            <PropertyRef Name="CenovnikKojiTuristickaAgencijaFormiraCenovnikId" />
+          </Key>
+          <NavigationProperty Name="PutovanjeKojeNudiTuristickaAgencija" Relationship="ModelBP2.PutovanjeKojeNudiTuristickaAgencija_Cenovnik_Putovanje" FromRole="Cenovnik_Putovanje" ToRole="PutovanjeKojeNudiTuristickaAgencija" />
+          <Property Name="PutovanjeKojeNudiTuristickaAgencijaPutovanjeId" Type="Int32" Nullable="false" />
+          <Property Name="PutovanjeKojeNudiTuristickaAgencijaTuristickaAgencijaId" Type="Int32" Nullable="false" />
+          <Property Name="PutovanjeKojeNudiTuristickaAgencijaVodicId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CenovnikKojiTuristickaAgencijaFormira" Relationship="ModelBP2.CenovnikKojiTuristickaAgencijaFormira_Cenovnik_Putovanje" FromRole="Cenovnik_Putovanje" ToRole="CenovnikKojiTuristickaAgencijaFormira" />
+          <Property Name="CenovnikKojiTuristickaAgencijaFormiraTuristickaAgencijaId" Type="Int32" Nullable="false" />
+          <Property Name="CenovnikKojiTuristickaAgencijaFormiraCenovnikId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="PutovanjeKojeNudiTuristickaAgencija_Cenovnik_Putovanje">
+          <End Type="ModelBP2.PutovanjeKojeNudiTuristickaAgencija" Role="PutovanjeKojeNudiTuristickaAgencija" Multiplicity="1" />
+          <End Type="ModelBP2.Cenovnik_Putovanje" Role="Cenovnik_Putovanje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PutovanjeKojeNudiTuristickaAgencija">
+              <PropertyRef Name="PutovanjeId" />
+              <PropertyRef Name="TuristickaAgencijaId" />
+            </Principal>
+            <Dependent Role="Cenovnik_Putovanje">
+              <PropertyRef Name="PutovanjeKojeNudiTuristickaAgencijaPutovanjeId" />
+              <PropertyRef Name="PutovanjeKojeNudiTuristickaAgencijaTuristickaAgencijaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CenovnikKojiTuristickaAgencijaFormira_Cenovnik_Putovanje">
+          <End Type="ModelBP2.CenovnikKojiTuristickaAgencijaFormira" Role="CenovnikKojiTuristickaAgencijaFormira" Multiplicity="1" />
+          <End Type="ModelBP2.Cenovnik_Putovanje" Role="Cenovnik_Putovanje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CenovnikKojiTuristickaAgencijaFormira">
+              <PropertyRef Name="TuristickaAgencijaId" />
+              <PropertyRef Name="CenovnikId" />
+            </Principal>
+            <Dependent Role="Cenovnik_Putovanje">
+              <PropertyRef Name="CenovnikKojiTuristickaAgencijaFormiraTuristickaAgencijaId" />
+              <PropertyRef Name="CenovnikKojiTuristickaAgencijaFormiraCenovnikId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Radnik" Abstract="true">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ime" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Prezime" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="JMBG" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Filijala" Relationship="ModelBP2.FilijalaRadnik" FromRole="Radnik" ToRole="Filijala" />
+          <Property Name="FilijalaId" Type="Int32" Nullable="false" />
+          <Property Name="FilijalaTuristickaAgencijaId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sekretarica" BaseType="ModelBP2.Radnik" >
+          <Property Name="ProdatiUgovori" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Ugovors" Relationship="ModelBP2.SekretaricaUgovor" FromRole="Sekretarica" ToRole="Ugovor" />
+        </EntityType>
+        <EntityType Name="Vodic" BaseType="ModelBP2.Radnik" >
+          <Property Name="IstorijaPutovanja" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="PutovanjeKojeNudiTuristickaAgencijas" Relationship="ModelBP2.VodicPutovanjeKojeNudiTuristickaAgencija" FromRole="Vodic" ToRole="PutovanjeKojeNudiTuristickaAgencija" />
+        </EntityType>
+        <EntityType Name="Menadzer" BaseType="ModelBP2.Radnik" >
+          <Property Name="BrojPodredjenihRadnika" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Filijala1" Relationship="ModelBP2.MenadzerFilijala" FromRole="Menadzer" ToRole="Filijala" />
+        </EntityType>
+        <Association Name="FilijalaRadnik">
+          <End Type="ModelBP2.Filijala" Role="Filijala" Multiplicity="1" />
+          <End Type="ModelBP2.Radnik" Role="Radnik" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Filijala">
+              <PropertyRef Name="Id" />
+              <PropertyRef Name="TuristickaAgencijaId" />
+            </Principal>
+            <Dependent Role="Radnik">
+              <PropertyRef Name="FilijalaId" />
+              <PropertyRef Name="FilijalaTuristickaAgencijaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SekretaricaUgovor">
+          <End Type="ModelBP2.Sekretarica" Multiplicity="1" Role="Sekretarica" />
+          <End Type="ModelBP2.Ugovor" Multiplicity="*" Role="Ugovor" />
+          <ReferentialConstraint>
+            <Principal Role="Sekretarica">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Ugovor">
+              <PropertyRef Name="SekretaricaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="VodicPutovanjeKojeNudiTuristickaAgencija">
+          <End Type="ModelBP2.Vodic" Role="Vodic" Multiplicity="1" />
+          <End Type="ModelBP2.PutovanjeKojeNudiTuristickaAgencija" Role="PutovanjeKojeNudiTuristickaAgencija" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vodic">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PutovanjeKojeNudiTuristickaAgencija">
+              <PropertyRef Name="VodicId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="MenadzerFilijala">
+          <End Type="ModelBP2.Menadzer" Role="Menadzer" Multiplicity="0..1" />
+          <End Type="ModelBP2.Filijala" Role="Filijala" Multiplicity="1" />
+        </Association>
+        <ComplexType Name="GetVodicsPutovanja_Result">
+          <Property Type="String" Name="Destinacija" Nullable="true" MaxLength="100" />
+          <Property Type="DateTime" Name="DatumPolaska" Nullable="true" Precision="27" />
+        </ComplexType>
+        <ComplexType Name="AllVodicsPutovanja_Result">
+          <Property Type="String" Name="Destinacija" Nullable="true" MaxLength="100" />
+          <Property Type="DateTime" Name="DatumDolaska" Nullable="true" Precision="27" />
+        </ComplexType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModelBP2StoreContainer" CdmEntityContainer="ModelBP2Container">
+    <EntitySetMapping Name="TuristickaAgencijaSet">
+      <EntityTypeMapping TypeName="IsTypeOf(ModelBP2.TuristickaAgencija)">
+        <MappingFragment StoreEntitySet="TuristickaAgencijaSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FilijalaSet">
+      <EntityTypeMapping TypeName="IsTypeOf(ModelBP2.Filijala)">
+        <MappingFragment StoreEntitySet="FilijalaSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="TuristickaAgencijaId" ColumnName="TuristickaAgencijaId" />
+          <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+          <ScalarProperty Name="Grad" ColumnName="Grad" />
+          <ScalarProperty Name="Adresa" ColumnName="Adresa" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PutovanjeSet">
+      <EntityTypeMapping TypeName="IsTypeOf(ModelBP2.Putovanje)">
+        <MappingFragment StoreEntitySet="PutovanjeSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Destinacija" ColumnName="Destinacija" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="KlijentSet">
+      <EntityTypeMapping TypeName="IsTypeOf(ModelBP2.Klijent)">
+        <MappingFragment StoreEntitySet="KlijentSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Ime" ColumnName="Ime" />
+          <ScalarProperty Name="Prezime" ColumnName="Prezime" />
+          <ScalarProperty Name="BrojPasosa" ColumnName="BrojPasosa" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CenovnikSet">
+      <EntityTypeMapping TypeName="IsTypeOf(ModelBP2.Cenovnik)">
+        <MappingFragment StoreEntitySet="CenovnikSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="PocetakVazenja" ColumnName="PocetakVazenja" />
+          <ScalarProperty Name="KrajVazenja" ColumnName="KrajVazenja" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CenovnikKojiTuristickaAgencijaFormiraSet">
+      <EntityTypeMapping TypeName="IsTypeOf(ModelBP2.CenovnikKojiTuristickaAgencijaFormira)">
+        <MappingFragment StoreEntitySet="CenovnikKojiTuristickaAgencijaFormiraSet">
+          <ScalarProperty Name="TuristickaAgencijaId" ColumnName="TuristickaAgencijaId" />
+          <ScalarProperty Name="CenovnikId" ColumnName="CenovnikId" />
+          <ScalarProperty Name="KoeficijentNaplate" ColumnName="KoeficijentNaplate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="KlijentKojiPoslujeSaFilijalomSet">
+      <EntityTypeMapping TypeName="IsTypeOf(ModelBP2.KlijentKojiPoslujeSaFilijalom)">
+        <MappingFragment StoreEntitySet="KlijentKojiPoslujeSaFilijalomSet">
+          <ScalarProperty Name="KlijentId" ColumnName="KlijentId" />
+          <ScalarProperty Name="FilijalaId" ColumnName="FilijalaId" />
+          <ScalarProperty Name="FilijalaTuristickaAgencijaId" ColumnName="FilijalaTuristickaAgencijaId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PutovanjeKojeTuristickaAgencijaNudiSet">
+      <EntityTypeMapping TypeName="IsTypeOf(ModelBP2.PutovanjeKojeNudiTuristickaAgencija)">
+        <MappingFragment StoreEntitySet="PutovanjeKojeTuristickaAgencijaNudiSet">
+          <ScalarProperty Name="PutovanjeId" ColumnName="PutovanjeId" />
+          <ScalarProperty Name="TuristickaAgencijaId" ColumnName="TuristickaAgencijaId" />
+          <ScalarProperty Name="DatumDolaska" ColumnName="DatumDolaska" />
+          <ScalarProperty Name="Trajanje" ColumnName="Trajanje" />
+          <ScalarProperty Name="CenaPutovanja" ColumnName="CenaPutovanja" />
+          <ScalarProperty Name="NazivSmestaja" ColumnName="NazivSmestaja" />
+          <ScalarProperty Name="VodicId" ColumnName="VodicId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UgovorSet">
+      <EntityTypeMapping TypeName="IsTypeOf(ModelBP2.Ugovor)">
+        <MappingFragment StoreEntitySet="UgovorSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="SifraOsiguranja" ColumnName="SifraOsiguranja" />
+          <ScalarProperty Name="PutovanjeKojeNudiTuristickaAgencijaPutovanjeId" ColumnName="PutovanjeKojeNudiTuristickaAgencijaPutovanjeId" />
+          <ScalarProperty Name="PutovanjeKojeNudiTuristickaAgencijaTuristickaAgencijaId" ColumnName="PutovanjeKojeNudiTuristickaAgencijaTuristickaAgencijaId" />
+          <ScalarProperty Name="PutovanjeKojeNudiTuristickaAgencijaVodicId" ColumnName="PutovanjeKojeNudiTuristickaAgencijaVodicId" />
+          <ScalarProperty Name="KlijentKojiPoslujeSaFilijalomKlijentId" ColumnName="KlijentKojiPoslujeSaFilijalomKlijentId" />
+          <ScalarProperty Name="KlijentKojiPoslujeSaFilijalomFilijalaId" ColumnName="KlijentKojiPoslujeSaFilijalomFilijalaId" />
+          <ScalarProperty Name="KlijentKojiPoslujeSaFilijalomFilijalaTuristickaAgencijaId" ColumnName="KlijentKojiPoslujeSaFilijalomFilijalaTuristickaAgencijaId" />
+          <ScalarProperty Name="SekretaricaId" ColumnName="SekretaricaId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cenovnik_Putovanje">
+      <EntityTypeMapping TypeName="IsTypeOf(ModelBP2.Cenovnik_Putovanje)">
+        <MappingFragment StoreEntitySet="Cenovnik_Putovanje">
+          <ScalarProperty Name="PutovanjeKojeNudiTuristickaAgencijaPutovanjeId" ColumnName="PutovanjeKojeNudiTuristickaAgencijaPutovanjeId" />
+          <ScalarProperty Name="PutovanjeKojeNudiTuristickaAgencijaTuristickaAgencijaId" ColumnName="PutovanjeKojeNudiTuristickaAgencijaTuristickaAgencijaId" />
+          <ScalarProperty Name="PutovanjeKojeNudiTuristickaAgencijaVodicId" ColumnName="PutovanjeKojeNudiTuristickaAgencijaVodicId" />
+          <ScalarProperty Name="CenovnikKojiTuristickaAgencijaFormiraTuristickaAgencijaId" ColumnName="CenovnikKojiTuristickaAgencijaFormiraTuristickaAgencijaId" />
+          <ScalarProperty Name="CenovnikKojiTuristickaAgencijaFormiraCenovnikId" ColumnName="CenovnikKojiTuristickaAgencijaFormiraCenovnikId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RadnikSet">
+      <EntityTypeMapping TypeName="IsTypeOf(ModelBP2.Radnik)">
+        <MappingFragment StoreEntitySet="RadnikSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Ime" ColumnName="Ime" />
+          <ScalarProperty Name="Prezime" ColumnName="Prezime" />
+          <ScalarProperty Name="JMBG" ColumnName="JMBG" />
+          <ScalarProperty Name="FilijalaId" ColumnName="FilijalaId" />
+          <ScalarProperty Name="FilijalaTuristickaAgencijaId" ColumnName="FilijalaTuristickaAgencijaId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(ModelBP2.Sekretarica)">
+        <MappingFragment StoreEntitySet="RadnikSet_Sekretarica">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ProdatiUgovori" ColumnName="ProdatiUgovori" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(ModelBP2.Vodic)">
+        <MappingFragment StoreEntitySet="RadnikSet_Vodic">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IstorijaPutovanja" ColumnName="IstorijaPutovanja" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(ModelBP2.Menadzer)">
+        <MappingFragment StoreEntitySet="RadnikSet_Menadzer">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="BrojPodredjenihRadnika" ColumnName="BrojPodredjenihRadnika" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="MenadzerFilijala" TypeName="ModelBP2.MenadzerFilijala" StoreEntitySet="RadnikSet_Menadzer">
+      <EndProperty Name="Filijala">
+        <ScalarProperty Name="Id" ColumnName="Filijala1_Id" />
+        <ScalarProperty Name="TuristickaAgencijaId" ColumnName="Filijala1_TuristickaAgencijaId" />
+      </EndProperty>
+      <EndProperty Name="Menadzer">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+          <FunctionImportMapping FunctionImportName="AllVodicsPutovanja" FunctionName="ModelBP2.Store.AllVodicsPutovanja">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ModelBP2.AllVodicsPutovanja_Result">
+                <ScalarProperty Name="Destinacija" ColumnName="Destinacija" />
+                <ScalarProperty Name="DatumDolaska" ColumnName="DatumDolaska" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetVodicsPutovanja" FunctionName="ModelBP2.Store.GetVodicsPutovanja" />
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
